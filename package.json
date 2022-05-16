@@ -1,0 +1,20 @@
+{
+  "name": "cs290_final",
+  "version": "1.0.0",
+  "description": "Final projct for CS290",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-sp22/final-project-crab-team.git"
+  },
+  "author": " <shkodykot.35@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-sp22/final-project-crab-team/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-sp22/final-project-crab-team#readme"
+}
