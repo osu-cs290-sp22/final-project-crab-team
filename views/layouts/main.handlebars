@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <title>Crabby</title>
+
+   <!-- This is a 3rd-party stylesheet to incorporate the font family to be used for this page ("Roboto"). -->
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="/style.css" media="screen">
+   <script src="/index.js" charset="utf-8" defer></script>
+   <!--<script src="/fact_template.js" charset="utf-8" defer></script>-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.runtime.js"
+      integrity="sha512-0bRnmqp8jww8h5q9khSJSMF7kUFVuzAiVpbwCr1+kot0yAwtVukdBQGznIvytgpFzy6wEgFbjbNSO2xcSBHTWA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+   <header>
+      <div class="topheader">
+         <a href="#">
+            <h1 class="crabby-title"><i <!--add icon here--></i>Crabby</h1>
+         </a>
+      </div>
+      <!-- Side Navbar -->
+      <div class="sidenav">
+         <a href="#">Home</a>
+         <a href="#">Add Fact</a>
+         <a href="#">Play Trivia</a>
+      </div>
+   </header>
+
+   {{{body}}}
+
+</body>
+
+</html>
