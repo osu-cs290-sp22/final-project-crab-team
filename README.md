@@ -1,6 +1,6 @@
 # final-project-crab-team
 ---
-#To Do:
+To Do:
 1. Base Site
   * main layout (navbar, header)
   * fact container
