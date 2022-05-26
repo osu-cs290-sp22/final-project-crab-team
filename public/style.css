@@ -48,14 +48,19 @@ a {
    font-weight: bold;
 }
 
-.crab-container {
+.content-container {
    position: absolute;
+   background-color: white;
    top: 15%;
    left: 22%;
    margin: 0%;
    width: 78%;
    height: 85%;
+   overflow-y: scroll;
+}
+
+.crab-container {
+   position: relative;
    font-size: 300px;
    /*this size is just to test the scrolling functionality, change later*/
-   overflow-y: scroll;
 }
