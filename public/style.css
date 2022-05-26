@@ -55,4 +55,7 @@ a {
    margin: 0%;
    width: 78%;
    height: 85%;
+   font-size: 300px;
+   /*this size is just to test the scrolling functionality, change later*/
+   overflow-y: scroll;
 }
