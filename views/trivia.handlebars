@@ -1,7 +1,11 @@
 <main>
 	{{#if win}}
-		{{>win}}
-	{{else}}
-		{{>loss}}
+	{{>win}}
+	{{/if}}
+	{{#if loss}}
+	{{>loss}}
+	{{/if}}
+	{{#if start}}
+	{{>triviaStart}}
 	{{/if}}
 </main>

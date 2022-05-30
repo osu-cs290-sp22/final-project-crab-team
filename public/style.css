@@ -1,62 +1,76 @@
 body {
-   margin: 0;
-   background-color: white;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
+	margin: 0;
+	background-color: white;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .topheader {
-   position: fixed;
-   width: 100%;
-   height: 15%;
-   background-color: darkred;
-   margin: 0%;
+	position: fixed;
+	width: 100%;
+	height: 15%;
+	background-color: darkred;
+	margin: 0%;
 }
 
 .sidenav {
-   position: fixed;
-   margin: 0%;
-   width: 22%;
-   background-color: lightgray;
-   height: 100%;
-   top: 15%;
+	position: fixed;
+	margin: 0%;
+	width: 22%;
+	background-color: lightgray;
+	height: 100%;
+	top: 15%;
 }
 
 a {
-   text-decoration: none;
+	text-decoration: none;
 }
 
 .crabby-title {
-   position: relative;
-   margin: 0%;
-   top: 18%;
-   left: 3%;
-   font-size: 4vw;
-   font-weight: bold;
-   color: white;
-   width: 18%;
+	position: relative;
+	display: inline;
+	margin: 0%;
+	top: 18%;
+	left: 1%;
+	font-size: 4vw;
+	font-weight: bold;
+	color: white;
+	width: 18%;
+}
+
+.crabby-icon {
+	position: relative;
+	top: -16%;
+	width: 7%;
+	padding: 10px;
+	height: auto;
+	float: left;
 }
 
 .nav-item {
-   position: relative;
-   display: block;
-   left: 20%;
-   top: 5%;
-   color: white;
-   margin: 3%;
-   margin-bottom: 6%;
-   font-size: 2vw;
-   font-weight: bold;
+	position: relative;
+	display: block;
+	left: 20%;
+	top: 5%;
+	color: white;
+	margin: 3%;
+	margin-bottom: 6%;
+	font-size: 2vw;
+	font-weight: bold;
+}
+
+.nav-item:hover {
+	color: #ff6600;
 }
 
 .content-container {
-   position: absolute;
-   background-color: white;
-   top: 15%;
-   left: 22%;
-   margin: 0%;
-   width: 78%;
-   height: 85%;
-   overflow-y: scroll;
+	position: absolute;
+	background-color: white;
+	top: 15%;
+	left: 22%;
+	margin: 0%;
+	width: 78%;
+	height: 85%;
+	overflow-y: scroll;
 }
 
 .crab-container {
@@ -82,6 +96,46 @@ a {
 	width: 25%;
 }
 
+#trivia-instructions {
+	position: relative;
+	left: 26%;
+	width: 45%;
+	margin-top: 10%;
+}
+
+#trivia-instructions h1 {
+	color: darkred;
+	position: relative;
+	left: 0%;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+#trivia-instructions p {
+	position: relative;
+	text-align: center;
+	font-size: x-large;
+	left: 0%;
+}
+
+#trivia-instructions button {
+	background-color: rgba(255, 102, 0, 0.489);
+	position: relative;
+	margin: 5%;
+	left: 30%;
+	width: 30%;
+	height: 55px;
+	border-radius: 12px;
+	padding: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	box-shadow: #565656;
+}
+
+#trivia-instructions button:hover {
+	background-color: rgb(205, 185, 148);
+}
+
 .fact-title {
 	color: black;
 	font-weight: 600;
@@ -103,7 +157,7 @@ a {
 
 .fact-content .fact-author {
 	position: relative;
-	!float: right;
+	 !float: right;
 	font-weight: 600;
 	margin-right: 10px;
 }
@@ -133,7 +187,7 @@ a {
 	position: relative;
 	margin: 10%;
 	margin-top: 5%;
-}	
+}
 
 .error h1 {
 	position: relative;

@@ -24,56 +24,49 @@ app.engine('handlebars', hbs.engine({
 	partialsDir: path.join(__dirname, '/views/partials')
 }));
 
-app.post('/add', function(request, response, next)
-{
-	if (request.body && request.body.title && request.body.text && request.body.author)
-	{
-		if (!request.body.tags)
-		{
+app.post('/add', function (request, response, next) {
+	if (request.body && request.body.title && request.body.text && request.body.author) {
+		if (!request.body.tags) {
 			fact_data.push({
-			"title": request.body.title,
-			"text": request.body.text,
-			"author": requst.body.author,
-			"tags": null
+				"title": request.body.title,
+				"text": request.body.text,
+				"author": requst.body.author,
+				"tags": null
 			});
 		}
-		else			
-		{
+		else {
 			fact_data.push({
-			"title": request.body.title,
-			"text": request.body.text,
-			"author": requst.body.author,
-			"tags": request.body.tags
+				"title": request.body.title,
+				"text": request.body.text,
+				"author": requst.body.author,
+				"tags": request.body.tags
 			})
 		}
 		fs.writeFile(
-			"./crab_facts.json", 
+			"./crab_facts.json",
 			JSON.stringify(fact_data, null, 2),
-			function(error) {
+			function (error) {
 				if (!error) { response.status(200).send(); }
 				else { response.status(500).send("server did not store file correctly"); }
 			}
 		);
 	}
-	else 
-	{
+	else {
 		response.status(400).send("Bad request");
 	}
 });
 
 //Server's GET requests for pages
-app.get('/', function (request, response)
-{
-	response.status(200).render('facts', {layout: 'main', facts: fact_data});
+app.get('/', function (request, response) {
+	response.status(200).render('facts', { layout: 'main', facts: fact_data });
 });
 
-app.get('/trivia', function (request, response, next)
-{
-	response.status(200).render('trivia', {layout: 'main', win: true});
+app.get('/trivia', function (request, response, next) {
+	response.status(200).render('trivia', { layout: 'main', start: true, win: false, lose: false });
 })
 
 app.get('*', function (request, response) {
-	response.status(404).render('404', {layout: 'main'});
+	response.status(404).render('404', { layout: 'main' });
 });
 
 app.listen(port, function () {
