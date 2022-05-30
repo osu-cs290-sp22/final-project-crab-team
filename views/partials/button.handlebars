@@ -1,0 +1,35 @@
+<button type="button" id="add-fact-button"></button>
+
+<div id="modal-backdrop" class="hidden"></div>
+	 
+<div id="add-fact-modal" class="hidden">
+	
+	<div class="modal-dialog">
+
+		<div class="modal-header">
+			<h3>Add a Crab Fact</h3>
+			<button type="button" class="modal-close-button">&times;</button>
+		</div>
+
+		<div class="modal-body">
+			<div class="fact-input-element">
+				<label for="fact-title-input">Fact Title</label>
+				<textarea id="fact-title-input"></textarea>
+			</div>
+			<div class="fact-input-element">
+				<label for="fact-text-input">Fact text</label>
+				<textarea id="fact-text-input"></textarea>
+			</div>
+			<div class="fact-input-element">
+				<label for="fact-author-input">Author</label>
+				<input type="text" id="fact-author-input">
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<button type="button" class="modal-cancel-button">Cancel</button>
+			<button type="button" class="modal-accept-button">Post Fact</button>
+		</div>
+
+	</div>
+</div>

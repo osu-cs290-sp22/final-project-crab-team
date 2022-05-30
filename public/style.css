@@ -60,37 +60,245 @@ a {
 }
 
 .crab-container {
-   position: relative;
-   font-size: 300px;
-   /*this size is just to test the scrolling functionality, change later*/
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width: 80%;
+	margin-left: 15%;
+	margin-top: 2%;
+}
+
+.crab-fact {
+	display: block;
+	position: relative;
+	background-color: #fafafa;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: #e6e6e6;
+	padding: 0.5em;
+	margin: 0.25em;
+	width: 25%;
+}
+
+.fact-title {
+	color: black;
+	font-weight: 600;
+	padding: 5px 10px;
+	width: 90%;
+	background-color: pink;
+}
+
+.fact-content {
+	width: 90%;
+	background-color: olivedrab;
+	padding: 5px 10px;
+}
+
+.fact-content .fact-text {
+	position: relative;
+	max-width: 80%;
+}
+
+.fact-content .fact-author {
+	position: relative;
+	!float: right;
+	font-weight: 600;
+	margin-right: 10px;
+}
+
+.tags {
+	position: relative;
+	color: #565656;
+	background-color: pink;
+	padding: 5px 10px;
+	margin-top: 5px;
+	width: 90%;
 }
 
 .oops-crab {
-   position: relative;
-   left: 30%;
-   width: 300px;
-   height: 300px;
+	position: relative;
+	left: 30%;
+	width: 300px;
+	height: 300px;
 }
 
 .oops-crab img {
-   width: 100%;
-   height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .error {
-   position: relative;
-   margin: 10%;
-   margin-top: 5%;
-}
+	position: relative;
+	margin: 10%;
+	margin-top: 5%;
+}	
 
 .error h1 {
-   position: relative;
-   width: 10%;
-   left: 42%;
+	position: relative;
+	width: 10%;
+	left: 42%;
 }
 
 .error p {
-   position: relative;
-   width: 30%;
-   left: 33%;
+	position: relative;
+	width: 30%;
+	left: 33%;
+}
+
+#modal-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, 0.85);
+}
+
+#add-fact-modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1010;
+	overflow: scroll;
+}
+
+.hidden {
+	display: none;
+}
+
+.modal-dialog {
+	width: auto;
+	max-width: 600px;
+	min-width: 350px;
+	min-height: 300px;
+	margin: 40px auto;
+	background-color: #fff;
+	border-radius: 15px;
+}
+
+.modal-header {
+	position: relative;
+	padding: 10px 20px;
+}
+
+.modal-header h3 {
+	margin: 0;
+	font-size: 28px;
+}
+
+.modal-close-button {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	font-size: 24px;
+	border: none;
+	background: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.modal-body {
+	padding: 20px;
+}
+
+.fact-input-element {
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	margin: 10px 0;
+}
+
+.fact-input-element label {
+	font-weight: 600;
+	flex: 1 75px;
+	margin-right: 10px;
+}
+
+.fact-input-element input,
+.fact-input-element textarea {
+	flex: 6 200px;
+	padding: 8px;
+	font-size: 20px;
+	border: 1px solid #aaa;
+}
+
+.fact-input-element textarea {
+	min-height: 64px;
+}
+
+.modal-footer {
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px 10px 20px 10px;
+}
+
+.modal-footer button {
+	font-size: 20px;
+	background-color: #fff;
+	color: #333;
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 10px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+.modal-footer .modal-cancel-button:hover {
+	background-color: #eee;
+}
+
+.modal-footer .modal-accept-button {
+	background-color: darkred;
+	color: white;
+}
+
+.modal-footer .modal-accept-button:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+}
+
+.results {
+	text-align: center;
+}
+
+.message {
+	font-size: 70px;
+	color: darkred;
+	font-weight: 100;
+}
+
+.message-text {
+	font-size: 30px;
+}
+
+.homebutton {
+	font-size: 25px;
+	color: white;
+	background-color: darkred;
+	border: 1px solid #4a0d16;
+	border-radius: 8px;
+	padding: 10px;
+	margin: 15px 25px;
+	cursor: pointer;
+}
+
+.homebutton:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+}
+
+#add-fact-button {
+	font-size: 25px;
+	color: white;
+	background-color: darkred;
+	border: 1px solid #4a0d16;
+	border-radius: 5px;
+	padding: 10px;
+	margin-right: 20px;
+	cursor: pointer;
 }

@@ -6,7 +6,7 @@ const express = require("express");
 var path = require('path');
 var fs = require('fs');
 var hbs = require('express-handlebars');
-//var fact_data = require(__dirname + '/crab_facts.json');
+var fact_data = require(__dirname + '/crab_facts.json');
 //var trivia_data = require(__dirname + '/trivia_questions.json');
 var app = express();
 
@@ -24,14 +24,52 @@ app.engine('handlebars', hbs.engine({
 	partialsDir: path.join(__dirname, '/views/partials')
 }));
 
+app.post('/add', function(request, response, next)
+{
+	if (request.body && request.body.title && request.body.text && request.body.author)
+	{
+		if (!request.body.tags)
+		{
+			fact_data.push({
+			"title": request.body.title,
+			"text": request.body.text,
+			"author": requst.body.author,
+			"tags": null
+			});
+		}
+		else			
+		{
+			fact_data.push({
+			"title": request.body.title,
+			"text": request.body.text,
+			"author": requst.body.author,
+			"tags": request.body.tags
+			})
+		}
+		fs.writeFile(
+			"./crab_facts.json", 
+			JSON.stringify(fact_data, null, 2),
+			function(error) {
+				if (!error) { response.status(200).send(); }
+				else { response.status(500).send("server did not store file correctly"); }
+			}
+		);
+	}
+	else 
+	{
+		response.status(400).send("Bad request");
+	}
+});
+
+//Server's GET requests for pages
 app.get('/', function (request, response)
 {
-	response.status(200).render('facts', {layout: 'main'});
+	response.status(200).render('facts', {layout: 'main', facts: fact_data});
 });
 
 app.get('/trivia', function (request, response, next)
 {
-	response.status(200).render('trivia', {layout: 'main'});
+	response.status(200).render('trivia', {layout: 'main', win: true});
 })
 
 app.get('*', function (request, response) {

@@ -1,3 +1,7 @@
 <main>
-	We have some trivia
+	{{#if win}}
+		{{>win}}
+	{{else}}
+		{{>loss}}
+	{{/if}}
 </main>
