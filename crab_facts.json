@@ -3,36 +3,66 @@
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
   },
   {
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
   },
   {
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
   },
   {
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
   },
   {
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
   },
   {
     "title": "Title",
     "text": "some test text",
     "author": ";)",
-    "tags": [ "yes", "crabs", "vibing" ]
+    "tags": [
+      "yes",
+      "crabs",
+      "vibing"
+    ]
+  },
+  {
+    "title": "hello",
+    "text": "i am but a friendly post request",
+    "author": "love me",
+    "tags": "emply for now"
   }
 ]

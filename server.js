@@ -12,6 +12,7 @@ var app = express();
 
 //includes all our funky little css and js files
 app.use(express.static(__dirname + '/public'));
+app.use(express.json());
 
 var port = process.env.PORT || 3000;
 
@@ -25,12 +26,14 @@ app.engine('handlebars', hbs.engine({
 }));
 
 app.post('/add', function (request, response, next) {
+	console.log('post request recieved');
+	console.log(request.body);
 	if (request.body && request.body.title && request.body.text && request.body.author) {
 		if (!request.body.tags) {
 			fact_data.push({
 				"title": request.body.title,
 				"text": request.body.text,
-				"author": requst.body.author,
+				"author": request.body.author,
 				"tags": null
 			});
 		}
@@ -38,7 +41,7 @@ app.post('/add', function (request, response, next) {
 			fact_data.push({
 				"title": request.body.title,
 				"text": request.body.text,
-				"author": requst.body.author,
+				"author": request.body.author,
 				"tags": request.body.tags
 			})
 		}
@@ -52,7 +55,7 @@ app.post('/add', function (request, response, next) {
 		);
 	}
 	else {
-		response.status(400).send("Bad request");
+		response.status(400).send("Bad request :(");
 	}
 });
 
@@ -62,7 +65,7 @@ app.get('/', function (request, response) {
 });
 
 app.get('/trivia', function (request, response, next) {
-	response.status(200).render('trivia', { layout: 'main', start: true, win: false, lose: false });
+	response.status(200).render('trivia', { layout: 'main', start: false, win: true, lose: false });
 })
 
 app.get('*', function (request, response) {

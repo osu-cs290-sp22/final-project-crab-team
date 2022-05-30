@@ -1,37 +1,39 @@
 //insert client-side javascript here
 
+const post_url = window.location.protocol + '/add';
+
 function add_fact(title, text, author)
 {
 	if (!validate()) { return; }
 	
-	var new_fact = Handlebars.templates.fact({
+	var new_fact = {
 		title: title,
 		text: text,
 		author: author, 
 		tags: 'emply for now'
-	});
+	};
 	
-	(async () => {
-		const rawResponse = await fetch('localhost:3000/add', {
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				title: title,
-				text: text,
-				author: author, 
-				tags: 'emply for now'
-			})
-		});
-		const content = await rawResponse.json();
-		console.log(content);
-	});	
+	
+	
+	post_fact('/add', new_fact)
+	.then(data => {
+		console.log(data);
+	});
 	
 	//console.log(new_fact);
 	
 	unhide_modal();
+}
+
+async function post_fact(url, data)
+{
+	console.log(data);
+	const response = await fetch(url, {
+		method: 'POST', 
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(data)
+	});
+	return response.json();
 }
 
 unhide_modal();
