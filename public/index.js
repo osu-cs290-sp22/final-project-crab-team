@@ -2,18 +2,21 @@
 
 const post_url = window.location.protocol + '/add';
 
-function add_fact(title, text, author)
+function add_fact(title, text, author, tags)
 {
 	if (!validate()) { return; }
+	
+	var tags_array = tags.split(', ');
+	tags_array = create_tags(tags_array);
 	
 	var new_fact = {
 		title: title,
 		text: text,
 		author: author, 
-		tags: 'emply for now'
+		tags: tags_array
 	};
 	
-	
+	unhide_modal();
 	
 	post_fact('/add', new_fact)
 	.then(data => {
@@ -36,6 +39,13 @@ async function post_fact(url, data)
 	return response.json();
 }
 
+function create_tags(tags)
+{
+	var hash = "#";
+	for (var tag = 0; tag < tags.length; tag++) { tags[tag] = hash.concat(tags[tag]); }
+	return tags; 
+}
+
 unhide_modal();
 
 function unhide_modal()
@@ -55,6 +65,7 @@ function unhide_modal()
 		document.getElementById('fact-text-input').value = '';
 		document.getElementById("fact-author-input").value = '';
 		document.getElementById('fact-title-input').value = '';
+		document.getElementById('fact-tag-input').value = '';
 	}
 }
 
@@ -101,7 +112,7 @@ create.addEventListener("click", function ()
 	console.log("hi");
 	add_fact(document.getElementById('fact-title-input').value, 
 	document.getElementById('fact-text-input').value, 
-	document.getElementById("fact-author-input").value); 
-	//document.getElementById('fact-tag-input').value);
+	document.getElementById("fact-author-input").value,
+	document.getElementById('fact-tag-input').value);
 	unhide_modal();
 });

@@ -63,6 +63,10 @@
     "title": "hello",
     "text": "i am but a friendly post request",
     "author": "love me",
-    "tags": "emply for now"
+    "tags": [
+      "emply",
+      "for",
+      "now"
+    ]
   }
 ]
