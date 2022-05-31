@@ -1,62 +1,57 @@
 [
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Crab Walking",
+    "text": "Crabs typically walk and swim sideways due to the articulation of their legs, but true crabs are capable of moving in all directions!",
+    "author": "CrabWalk",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "walk",
+      "general"
     ]
   },
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Crab Legs",
+    "text": "Crabs are decapods, since they have 10 legs. The first pair of claws is called chela!",
+    "author": "CrabLegs",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "legs",
+      "general"
     ]
   },
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Coconut Crab",
+    "text": "The coconut crab is the largest land-dwelling crustacean in the world! They average up to 5 pounds in weight, although they can weigh up to 9, and have a leg span of 36 inches.",
+    "author": "Coconut",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "coconut crab",
+      "large"
     ]
   },
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Spider Crab Legends",
+    "text": "Ancient mariner stories say that these crabs used to drag sailers overboard and eat them alive in the ocean!",
+    "author": "ActualSpiderCrab",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "spider crab",
+      "legend",
+      "history"
     ]
   },
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Hermit Crab Shell Sharing",
+    "text": "When a new shell shows up, hermit crabs will line up from largest to smallest, and each will try the shell on until it fits!",
+    "author": "HermitEnthusiast",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "hermit crab",
+      "shells"
     ]
   },
   {
-    "title": "Title",
-    "text": "some test text",
-    "author": ";)",
+    "title": "Horseshoe Crab Anatomy",
+    "text": "Horseshoe crabs have a tank-like structure consisting of a front shell (the prosoma), a back shell (the opisthosoma), and a spike-like tail (the telson)! They use their tail to flip over.",
+    "author": "HorseshoeFan",
     "tags": [
-      "yes",
-      "crabs",
-      "vibing"
+      "horseshoe crab",
+      "anatomy"
     ]
   },
   {
