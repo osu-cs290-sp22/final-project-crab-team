@@ -356,3 +356,8 @@ a {
 	margin-right: 20px;
 	cursor: pointer;
 }
+
+#add-fact-button:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+}
