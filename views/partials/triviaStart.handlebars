@@ -1,5 +1,39 @@
+<div id="loss"class="results hide">
+	<h2 class="message"> Tough Luck! </h2>
+	<p class="message-text"> You got less than 5/5 on the trivia. 
+		Better luck next time!</p>
+	
+	<a class="homebutton" href="/">Home</a>
+	
+</div>
+
+<div id="win"class="results hide">
+	<h2 class="message"> Congratulations! </h2>
+	<p class="message-text"> You got 5/5 on the trivia. 
+		You can now add a fact about crabs</p>
+	
+	<a class="homebutton" href="/">Home</a>
+	
+	{{>button}}
+	
+</div>
 <div id="trivia-instructions">
+   <div id="trivia-start-instruct">
    <h1>Welcome to Trivia!</h1>
-   <p>Answer at least seven trivia questions correctly to add a new crab fact!</p>
-   <button id="start-button">START</button>
+   <p>Answer at least five trivia questions correctly to add a new crab fact!</p>
+   </div>
+   <button id="start-button" type="button" class="start-button button instruct">START</button>
+
+   <!--This is to show the question and possible answers-->
+<div id="trivia-container" class="trivia-container hide">
+   <p id="trivia-question" class="trivia-question"></p>
+   <div id="answers" class="answers">
+   </div>
+</div>
+  <button id="next-button" type="button" class="next-button button instruct hide">NEXT</button>
+<div class="question-footer">
+   <!--This is to show which question they are on-->
+   <p id="question-label" class="question-number hide"> 1 </p>
+</div>
+
 </div>

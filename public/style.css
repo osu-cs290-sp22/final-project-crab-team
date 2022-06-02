@@ -118,13 +118,36 @@ a {
 	left: 0%;
 }
 
-#trivia-instructions button {
-	background-color: rgba(255, 102, 0, 0.489);
+.instruct {
+	background-color: rgb(255, 102, 0, 0.489);
 	position: relative;
-	margin: 5%;
-	left: 30%;
+	left: 38%;
+	margin: 15px 25px;
 	width: 30%;
 	height: 55px;
+	border-radius: 12px;
+	padding: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	box-shadow: #565656;
+}
+
+.correct {
+	background-color: rgb(131, 222, 151);
+}
+
+.wrong {
+	background-color: rgb(189, 42, 64);
+}
+
+.answers {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+}
+.answer-choice {
+	margin: 5%;
+	width: 200px;
+	height: 80px;
 	border-radius: 12px;
 	padding: 5px;
 	font-size: 25px;
@@ -330,6 +353,11 @@ a {
 	font-size: 30px;
 }
 
+#add-fact-button:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+} 
+
 .homebutton {
 	font-size: 25px;
 	color: white;
@@ -361,3 +389,13 @@ a {
 	background-color: #fc7e91;
 	color: #4a0d16;
 }
+
+.button {
+	cursor: pointer;
+	width:auto;
+}
+
+.hide {
+	display: none;
+}
+
