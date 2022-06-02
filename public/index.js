@@ -152,6 +152,8 @@ function StartGame() {
 	questionContainer.classList.remove("hide");
     questionLabel.classList.remove("hide");
     displayQuestion.classList.remove('hide');
+    win.classList.add("hide");
+    loss.classList.add("hide");
 	shuffledQuestions = questionsArray.sort(() => Math.random() - .5)
 	currentQuestionIndex = 0;
     correctAnswers = 0;
