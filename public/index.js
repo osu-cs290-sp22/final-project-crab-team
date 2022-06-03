@@ -206,14 +206,18 @@ if (url[1] == "slide")
 		tiles = document.getElementsByClassName('tiles');
 		console.log(tiles);
 		Array.from(tiles).forEach(function(tile) {
-			tile.style.backgroundImage = "url('/images/slide/crab1.jpg')";
+			tile.classList.add('tiles2');
+			tile.classList.remove('tiles');
+			console.log(tile.className);
 		});
 	}
 	else if (url[2] == 2)
 	{
 		tiles = document.getElementsByClassName('tiles');
 		Array.from(tiles).forEach(function (tile) {
-			tile.style.backgroundImage = "url('/images/slide/crab2.jpg')";
+			tile.classList.add('tiles3');
+			tile.classList.remove('tiles');
+			console.log(tile.className);
 		});
 		
 	}
@@ -249,7 +253,6 @@ if (url[1] == "slide")
 	tile8.addEventListener("click", function () { click_tile(3, 2); });
 	tile9.addEventListener("click", function () { click_tile(3, 3); });
 
-	console.log(document);
 }
 
 /****************************************************
