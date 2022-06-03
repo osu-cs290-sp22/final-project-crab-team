@@ -144,6 +144,7 @@ a {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 }
+
 .answer-choice {
 	margin: 5%;
 	width: 200px;
@@ -353,7 +354,7 @@ a {
 #add-fact-button:hover {
 	background-color: #fc7e91;
 	color: #4a0d16;
-} 
+}
 
 .homebutton {
 	font-size: 25px;
@@ -389,14 +390,22 @@ a {
 
 .button {
 	cursor: pointer;
-	width:auto;
+	width: auto;
 }
 
 .hide {
 	display: none;
 }
 
-.tile1, .tile2, .tile3, .tile4, .tile5, .tile6, .tile7, .tile8, .tile9 {
+.tile1,
+.tile2,
+.tile3,
+.tile4,
+.tile5,
+.tile6,
+.tile7,
+.tile8,
+.tile9 {
 	display: table-cell;
 	width: 166px;
 	height: 166px;
@@ -416,15 +425,46 @@ a {
 	background-image: url('/images/slide/crab2.jpg');
 }
 
-.tile1 {background-position: left top;}
-.tile2 {background-position: center top;}
-.tile3 {background-position: right top;}
-.tile4 {background-position: left center;}
-.tile5 {background-position: center center;}
-.tile6 {background-position: right center;}
-.tile7 {background-position: left bottom;}
-.tile8 {background-position: center bottom;}
-.tile9 {background: white; cursor: default;}
+.tiles4 {
+	background-image: url('/images/slide/cool_crab.jpg')
+}
+
+.tile1 {
+	background-position: left top;
+}
+
+.tile2 {
+	background-position: center top;
+}
+
+.tile3 {
+	background-position: right top;
+}
+
+.tile4 {
+	background-position: left center;
+}
+
+.tile5 {
+	background-position: center center;
+}
+
+.tile6 {
+	background-position: right center;
+}
+
+.tile7 {
+	background-position: left bottom;
+}
+
+.tile8 {
+	background-position: center bottom;
+}
+
+.tile9 {
+	background: white;
+	cursor: default;
+}
 
 #newgame {
 	font-size: 25px;
@@ -464,7 +504,6 @@ a {
 	list-style-position: outside;
 }
 
-.slide-selection > li{
+.slide-selection>li {
 	margin: 25px;
 }
-
