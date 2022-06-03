@@ -1,17 +1,10 @@
-<!--This is to show the question and possible answers-->
-<div class="trivia-container">
-   <p class="trivia-question"> {{Question}} </p>
-   <div class="answers">
-      <input type="checkbox" class="answer-choice" value={{option1}}>
-      <input type="checkbox" class="answer-choice" value={{option2}}>
-      <input type="checkbox" class="answer-choice" value={{option3}}>
-      <input type="checkbox" class="answer-choice" value={{option4}}>
+<div id="trivia-container" class="trivia-container hide">
+   <p id="trivia-question" class="trivia-question"></p>
+   <div id="answers" class="answers">
    </div>
 </div>
-
+  <button id="next-button" type="button" class="next-button button instruct hide">NEXT</button>
 <div class="question-footer">
    <!--This is to show which question they are on-->
-   <p class="question-number"> {{questionNumber}} </p>
-   <!--button to submit answer to question-->
-   <button class="submit-answer-button">Submit</button>
+   <p id="question-label" class="question-number hide"> 1 </p>
 </div>
