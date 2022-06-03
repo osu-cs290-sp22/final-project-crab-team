@@ -18,7 +18,7 @@ function add_fact(title, text, author, tags)
 	
 	unhide_modal();
 	
-	post_fact('/add', new_fact)
+	post('/add', new_fact)
 	.then(data => {
 		console.log(data);
 	});
@@ -28,7 +28,7 @@ function add_fact(title, text, author, tags)
 	unhide_modal();
 }
 
-async function post_fact(url, data)
+async function post(url, data)
 {
 	console.log(data);
 	const response = await fetch(url, {
@@ -45,8 +45,6 @@ function create_tags(tags)
 	for (var tag = 0; tag < tags.length; tag++) { tags[tag] = hash.concat(tags[tag]); }
 	return tags; 
 }
-
-unhide_modal();
 
 function unhide_modal()
 {
@@ -94,58 +92,198 @@ function validate()
 	else { return true; }
 }
 
-//on button click, open and close the fact creator
-document.getElementById("add-fact-button").addEventListener("click", unhide_modal);
+var url = window.location.pathname.split('/');
 
-var close = document.querySelector('.modal-close-button');
-var cancel = document.querySelector('.modal-cancel-button');
+console.log(url);
 
-close.onclick = unhide_modal;
-cancel.onclick = unhide_modal;
 
-//on button click, create a new fact
-var container = document.querySelector('.crab-container');
-var create = document.querySelector('.modal-accept-button');
-
-create.addEventListener("click", function () 
+if (url[1] == 'trivia')
 {
-	console.log("hi");
-	add_fact(document.getElementById('fact-title-input').value, 
-	document.getElementById('fact-text-input').value, 
-	document.getElementById("fact-author-input").value,
-	document.getElementById('fact-tag-input').value);
 	unhide_modal();
-});
+	//on button click, open and close the fact creator
+	document.getElementById("add-fact-button").addEventListener("click", unhide_modal);
 
+	var close = document.querySelector('.modal-close-button');
+	var cancel = document.querySelector('.modal-cancel-button');
 
-//trivia game functions
+	close.onclick = unhide_modal;
+	cancel.onclick = unhide_modal;
 
+	//on button click, create a new fact
+	var container = document.querySelector('.crab-container');
+	var create = document.querySelector('.modal-accept-button');
 
-var startButton = document.getElementById("start-button");
-var nextButton = document.getElementById('next-button')
-var questionContainer = document.getElementById("trivia-container");
-var displayQuestion = document.getElementById("trivia-question");
-var quizAnswers = document.getElementById("answers");
-var shuffledQuestions, currentQuestionIndex, currentQuestionLabel;
-var questionLabel = document.getElementById("question-label");
-var instructions = document.getElementById("trivia-start-instruct");
-var loss = document.getElementById("loss");
-var win = document.getElementById("win");
-var correctAnswers;
+	create.addEventListener("click", function () 
+	{
+		console.log("hi");
+		add_fact(document.getElementById('fact-title-input').value, 
+		document.getElementById('fact-text-input').value, 
+		document.getElementById("fact-author-input").value,
+		document.getElementById('fact-tag-input').value);
+		unhide_modal();
+	});
+}
 
-startButton.addEventListener("click", StartGame);
+/****************************************************
+SLIDE PUZZLE
+*****************************************************/
+function click_tile(row, col)
+{
+	var cell = document.getElementById("cell" + row + col);
+	var tile = cell.className;
+	
+	if (tile != "tile9") //if not empty tile
+	{
+		if (col < 3) //if empty tile to the right
+		{
+			if (document.getElementById("cell" + row + (col + 1)).className === "tile9")
+			{
+				swap("cell" + row + col, "cell" + row + (col + 1));
+				return;
+			}
+		}
+		
+		if (col > 1) //if empty tile to the left
+		{
+			if (document.getElementById("cell" + row + (col - 1)).className === "tile9")
+			{
+				swap("cell" + row + col, "cell" + row + (col - 1));
+				return;
+			}
+		}
+		
+		if (row > 1) //if empty tile above
+		{
+			if (document.getElementById("cell" + (row - 1) + col).className === "tile9")
+			{
+				swap("cell" + row + col, "cell" + (row - 1) + col);
+				return;
+			}
+		}
+		
+		if (row < 3) //if empty tile below
+		{
+			if (document.getElementById("cell" + (row + 1) + col).className === "tile9")
+			{
+				swap("cell" + row + col, "cell" + (row + 1) + col);
+				return;
+			}
+		}
+	}
+}
 
-nextButton.addEventListener('click', () => {
-	currentQuestionIndex++;
-    currentQuestionLabel++;
-    if (currentQuestionIndex == 10) {
-        endGame();
-    }
-    else {
-    questionLabel.innerText = currentQuestionLabel
-	setNextQuestion();
-    }
-  }) 
+function swap(cell1, cell2)
+{
+	var temp = document.getElementById(cell1).className;
+	//var pic = document.getElementById(cell1).style.backgroundImage;
+	document.getElementById(cell1).className = document.getElementById(cell2).className;
+	document.getElementById(cell2).className = temp;
+	
+	//document.getElementById(cell1).style.backgroundImage = document.getElementById(cell2).backgroundImage;
+	//document.getElementById(cell2).style.backgroundImage = pic;
+}
+
+function shuffle()
+{
+	for (var row = 1; row <= 3; row++)
+	{
+		for (var col = 1; col <= 3; col++)
+		{
+			var row2 = Math.floor(Math.random()*3 + 1); //Pick a random row from 1 to 3
+			var col2 = Math.floor(Math.random()*3 + 1); //Pick a random column from 1 to 3
+     
+			swap("cell" + row + col,"cell" + row2 + col2); //Swap the look & feel of both cells
+		}
+	}
+}
+
+if (url[1] == "slide")
+{
+	var tiles = [];
+	
+	if (url[2] == 1) 
+	{
+		tiles = document.getElementsByClassName('tiles');
+		console.log(tiles);
+		Array.from(tiles).forEach(function(tile) {
+			tile.style.backgroundImage = "url('/images/slide/crab1.jpg')";
+		});
+	}
+	else if (url[2] == 2)
+	{
+		tiles = document.getElementsByClassName('tiles');
+		Array.from(tiles).forEach(function (tile) {
+			tile.style.backgroundImage = "url('/images/slide/crab2.jpg')";
+		});
+		
+	}
+	
+	
+	var tile1 = document.getElementById('cell11');
+	var tile2 = document.getElementById('cell12');
+	var tile3 = document.getElementById('cell13');
+
+	var tile4 = document.getElementById('cell21');
+	var tile5 = document.getElementById('cell22');
+	var tile6 = document.getElementById('cell23');
+
+	var tile7 = document.getElementById('cell31');
+	var tile8 = document.getElementById('cell32');
+	var tile9 = document.getElementById('cell33');
+	
+	shuffle();
+	
+	
+	var newgame = document.getElementById('newgame');
+	newgame.addEventListener("click", shuffle);
+
+	tile1.addEventListener("click", function () { click_tile(1, 1); });
+	tile2.addEventListener("click", function () { click_tile(1, 2); });
+	tile3.addEventListener("click", function () { click_tile(1, 3); });
+
+	tile4.addEventListener("click", function () { click_tile(2, 1); });
+	tile5.addEventListener("click", function () { click_tile(2, 2); });
+	tile6.addEventListener("click", function () { click_tile(2, 3); });
+
+	tile7.addEventListener("click", function () { click_tile(3, 1); });
+	tile8.addEventListener("click", function () { click_tile(3, 2); });
+	tile9.addEventListener("click", function () { click_tile(3, 3); });
+
+	console.log(document);
+}
+
+/****************************************************
+TRIVIA GAME
+*****************************************************/
+
+if (url[1] == 'trivia')
+{
+	var startButton = document.getElementById("start-button");
+	var nextButton = document.getElementById('next-button')
+	var questionContainer = document.getElementById("trivia-container");
+	var displayQuestion = document.getElementById("trivia-question");
+	var quizAnswers = document.getElementById("answers");
+	var shuffledQuestions, currentQuestionIndex, currentQuestionLabel;
+	var questionLabel = document.getElementById("question-label");
+	var instructions = document.getElementById("trivia-start-instruct");
+	var loss = document.getElementById("loss");
+	var win = document.getElementById("win");
+	var correctAnswers;
+
+	startButton.addEventListener("click", StartGame);
+
+	nextButton.addEventListener('click', () => {
+		currentQuestionIndex++;
+		currentQuestionLabel++;
+		if (currentQuestionIndex == 10) {
+			endGame();
+		}
+		else {
+		questionLabel.innerText = currentQuestionLabel
+		setNextQuestion();
+		}
+	  });
+}
 
 function StartGame() {
 	console.log('started');

@@ -66,7 +66,19 @@ app.get('/', function (request, response) {
 
 app.get('/trivia', function (request, response, next) {
 	response.status(200).render('trivia', { layout: 'main', start: false, win: true, lose: false });
-})
+});
+
+app.get('/slide', function (request, response, next){
+	response.status(200).render('slide', { layout: 'main', button: false });
+});
+
+app.get('/slide/:num', function (request, response, next){
+	var number = request.params.num;
+	if (number < 0 || number > 2) { next(); }
+	var image = "/images/slide/crab" + number + ".jpg";
+	//console.log(image);
+	response.status(200).render('slide', { layout: 'main', button: true});
+});
 
 app.get('*', function (request, response) {
 	response.status(404).render('404', { layout: 'main' });

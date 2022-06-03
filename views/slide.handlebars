@@ -1,0 +1,24 @@
+{{#if button}}
+	<center>
+		<div id="table" style="display: table;">
+			<div id="row1" style="display: table-row;">
+				<div id="cell11" class="tile1 tiles" style="display: table-cell; "></div>
+				<div id="cell12" class="tile2 tiles" style="display: table-cell; "></div>
+				<div id="cell13" class="tile3 tiles" style="display: table-cell; "></div>
+			</div>
+			<div id="row2" style="display: table-row;">
+				<div id="cell21" class="tile4 tiles" style="display: table-cell;"></div>
+				<div id="cell22" class="tile5 tiles" style="display: table-cell;"></div>
+				<div id="cell23" class="tile6 tiles" style="display: table-cell;"></div>
+			</div>
+			<div id="row3" style="display: table-row;">
+				<div id="cell31" class="tile7 tiles" style="display: table-cell;"></div>
+				<div id="cell32" class="tile8 tiles" style="display: table-cell;"></div>
+				<div id="cell33" class="tile9" style="display: table-cell;"></div>
+			</div>
+		</div>
+		<button id="newgame">New Game</button>
+	</center>
+{{else}}
+	{{>selection}}
+{{/if}}

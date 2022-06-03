@@ -399,3 +399,67 @@ a {
 	display: none;
 }
 
+.tile1, .tile2, .tile3, .tile4, .tile5, .tile6, .tile7, .tile8, .tile9 {
+	display: table-cell;
+	width: 166px;
+	height: 166px;
+	border: 2px solid white;
+	cursor: pointer;
+}
+
+.tiles {
+	background-image: url('/images/slide/crab0.jpg');
+}
+
+.tile1 {background-position: left top;}
+.tile2 {background-position: center top;}
+.tile3 {background-position: right top;}
+.tile4 {background-position: left center;}
+.tile5 {background-position: center center;}
+.tile6 {background-position: right center;}
+.tile7 {background-position: left bottom;}
+.tile8 {background-position: center bottom;}
+.tile9 {background: white; cursor: default;}
+
+#newgame {
+	font-size: 25px;
+	color: white;
+	background-color: darkred;
+	border: 1px solid #4a0d16;
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 5px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+#newgame:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+}
+
+.play-button {
+	font-size: 25px;
+	color: white;
+	background-color: darkred;
+	border: 1px solid #4a0d16;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 25px 20px;
+	cursor: pointer;
+}
+
+.play-button:hover {
+	background-color: #fc7e91;
+	color: #4a0d16;
+}
+
+.slide-selection {
+	list-style: none;
+	list-style-position: outside;
+}
+
+.slide-selection > li{
+	margin: 20px;
+}
+
