@@ -1,24 +1,34 @@
 {{#if button}}
-	<center>
-		<div id="table" style="display: table;">
-			<div id="row1" style="display: table-row;">
-				<div id="cell11" class="tile1 tiles" style="display: table-cell; "></div>
-				<div id="cell12" class="tile2 tiles" style="display: table-cell; "></div>
-				<div id="cell13" class="tile3 tiles" style="display: table-cell; "></div>
-			</div>
-			<div id="row2" style="display: table-row;">
-				<div id="cell21" class="tile4 tiles" style="display: table-cell;"></div>
-				<div id="cell22" class="tile5 tiles" style="display: table-cell;"></div>
-				<div id="cell23" class="tile6 tiles" style="display: table-cell;"></div>
-			</div>
-			<div id="row3" style="display: table-row;">
-				<div id="cell31" class="tile7 tiles" style="display: table-cell;"></div>
-				<div id="cell32" class="tile8 tiles" style="display: table-cell;"></div>
-				<div id="cell33" class="tile9" style="display: table-cell;"></div>
-			</div>
+<center id="puzzle-container">
+	<p id="game-play-message">Solve the puzzle to add a crab fact!</p>
+	<p id="solved-message" class="hide">Con-crab-ulations! You solved the puzzle!</p>
+	<div id="table" class="unsolved-border" style="display: table;">
+		<div id="row1" style="display: table-row;">
+			<div id="cell11" class="tile1 tiles no-numbers" style="display: table-cell; ">1</div>
+			<div id="cell12" class="tile2 tiles no-numbers" style="display: table-cell; ">2</div>
+			<div id="cell13" class="tile3 tiles no-numbers" style="display: table-cell; ">3</div>
 		</div>
-		<button id="newgame">New Game</button>
-	</center>
+		<div id="row2" style="display: table-row;">
+			<div id="cell21" class="tile4 tiles no-numbers" style="display: table-cell;">4</div>
+			<div id="cell22" class="tile5 tiles no-numbers" style="display: table-cell;">5</div>
+			<div id="cell23" class="tile6 tiles no-numbers" style="display: table-cell;">6</div>
+		</div>
+		<div id="row3" style="display: table-row;">
+			<div id="cell31" class="tile7 tiles no-numbers" style="display: table-cell;">7</div>
+			<div id="cell32" class="tile8 tiles no-numbers" style="display: table-cell;">8</div>
+			<div id="cell33" class="tile9" style="display: table-cell;"></div>
+		</div>
+	</div>
+	<div id="game-play-buttons">
+		<button id="newgame" class="game-button">New Game</button>
+		<button id="show-numbers" class="game-button">Show Numbers</button>
+		<button id="hide-numbers" class="game-button hide">Hide Numbers</button>
+	</div>
+	<div id="puzzle-solved-buttons" class="hide">
+		{{>button}}
+		<a id="solved-play-again" class="game-button" href="/slide">Play Again </a>
+	</div>
+</center>
 {{else}}
-	{{>selection}}
+{{>selection}}
 {{/if}}

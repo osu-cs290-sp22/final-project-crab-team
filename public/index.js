@@ -87,10 +87,10 @@ var url = window.location.pathname.split('/');
 console.log(url);
 
 
-if (url[1] == 'trivia') {
+if (url[1] == 'trivia' || url[1] == 'slide') {
 	unhide_modal();
 	//on button click, open and close the fact creator
-	document.getElementById("add-fact-button").addEventListener("click", unhide_modal);
+	document.getElementsByClassName("add-fact-button")[0].addEventListener("click", unhide_modal);
 
 	var close = document.querySelector('.modal-close-button');
 	var cancel = document.querySelector('.modal-cancel-button');
@@ -125,7 +125,7 @@ function click_tile(row, col) {
 		{
 			if (document.getElementById("cell" + row + (col + 1)).className === "tile9") {
 				swap("cell" + row + col, "cell" + row + (col + 1));
-				return;
+				return checkWin();
 			}
 		}
 
@@ -133,7 +133,8 @@ function click_tile(row, col) {
 		{
 			if (document.getElementById("cell" + row + (col - 1)).className === "tile9") {
 				swap("cell" + row + col, "cell" + row + (col - 1));
-				return;
+				validClick = true;
+				return checkWin();
 			}
 		}
 
@@ -141,7 +142,7 @@ function click_tile(row, col) {
 		{
 			if (document.getElementById("cell" + (row - 1) + col).className === "tile9") {
 				swap("cell" + row + col, "cell" + (row - 1) + col);
-				return;
+				return checkWin();
 			}
 		}
 
@@ -149,60 +150,127 @@ function click_tile(row, col) {
 		{
 			if (document.getElementById("cell" + (row + 1) + col).className === "tile9") {
 				swap("cell" + row + col, "cell" + (row + 1) + col);
-				return;
+				return checkWin();
 			}
 		}
 	}
+	return false;
+}
+
+function solvable() {
+	var inversions = getInversions();
+	if (inversions % 2 === 0)
+		return true;
+	return false;
+}
+
+function checkWin() {
+	var inversions = getInversions();
+	var lastCell = document.getElementById('cell33');
+	if (inversions == 0 && lastCell.classList[0] == 'tile9')
+		return true;
+	return false;
+}
+
+function getInversions() {
+	var tiles = document.getElementsByClassName('tiles');
+	var order = [];
+	for (let i = 0; i < tiles.length; i++) {
+		var square = tiles[i].classList[0];
+		var num = square[4];
+		order.push(num);
+	}
+	console.log("Order: ", order);
+	var inversions = 0;
+	for (let i = 0; i < order.length; i++) {
+		for (let x = i + 1; x < order.length; x++) {
+			if (order[i] > order[x])
+				inversions = inversions + 1;
+		}
+	}
+	return inversions;
 }
 
 function swap(cell1, cell2) {
 	var temp = document.getElementById(cell1).className;
-	//var pic = document.getElementById(cell1).style.backgroundImage;
+	var temp1 = document.getElementById(cell1).textContent;
 	document.getElementById(cell1).className = document.getElementById(cell2).className;
+	document.getElementById(cell1).textContent = document.getElementById(cell2).textContent;
 	document.getElementById(cell2).className = temp;
-
-	//document.getElementById(cell1).style.backgroundImage = document.getElementById(cell2).backgroundImage;
-	//document.getElementById(cell2).style.backgroundImage = pic;
+	document.getElementById(cell2).textContent = temp1;
 }
 
 function shuffle() {
-	for (var row = 1; row <= 3; row++) {
-		for (var col = 1; col <= 3; col++) {
-			var row2 = Math.floor(Math.random() * 3 + 1); //Pick a random row from 1 to 3
-			var col2 = Math.floor(Math.random() * 3 + 1); //Pick a random column from 1 to 3
+	do {
+		for (var row = 1; row <= 3; row++) {
+			for (var col = 1; col <= 3; col++) {
+				var row2 = Math.floor(Math.random() * 3 + 1); //Pick a random row from 1 to 3
+				var col2 = Math.floor(Math.random() * 3 + 1); //Pick a random column from 1 to 3
 
-			swap("cell" + row + col, "cell" + row2 + col2); //Swap the look & feel of both cells
+				swap("cell" + row + col, "cell" + row2 + col2); //Swap the look & feel of both cells
+			}
 		}
+		var solve = solvable();
+	} while (solve === false);
+}
+
+function displaySolved(whichImg) {
+	var missingPiece = document.getElementById('cell33');
+	var classToAdd = 'solved' + whichImg;
+	missingPiece.classList.add(classToAdd);
+	var gameMessage = document.getElementById('game-play-message');
+	gameMessage.classList.add('hide');
+	var winMessage = document.getElementById('solved-message');
+	winMessage.classList.remove('hide');
+	var gameButtons = document.getElementById('game-play-buttons');
+	var winButtons = document.getElementById('puzzle-solved-buttons');
+	gameButtons.classList.add('hide');
+	winButtons.classList.remove('hide');
+	var t = document.getElementById('table');
+	console.log(t)
+	t.classList.add('winborder');
+	t.classList.remove('unsolved-border');
+	var addFact = document.getElementsByClassName('add-fact-button')[0];
+	addFact.classList.add("solved-add-fact");
+	hideNumbers();
+}
+
+function hideNumbers() {
+	var tiles = document.getElementsByClassName('tiles');
+	for (let i = 0; i < tiles.length; i++) {
+		tiles[i].classList.add('no-numbers');
+		tiles[i].classList.remove('show-numbers');
 	}
 }
 
 if (url[1] == "slide") {
 	var tiles = [];
+	var whichPic = 0;
 
 	if (url[2] == 1) {
+		whichPic = 1;
 		tiles = document.getElementsByClassName('tiles');
 		console.log(tiles);
 		Array.from(tiles).forEach(function (tile) {
 			tile.classList.add('tiles2');
-			tile.classList.remove('tiles');
 			console.log(tile.className);
 		});
 	}
 	else if (url[2] == 2) {
+		whichPic = 2;
 		tiles = document.getElementsByClassName('tiles');
 		Array.from(tiles).forEach(function (tile) {
 			tile.classList.add('tiles3');
-			tile.classList.remove('tiles');
 			console.log(tile.className);
 		});
 
 	}
 
 	else if (url[2] == 3) {
+		whichPic = 3;
 		tiles = document.getElementsByClassName('tiles');
 		Array.from(tiles).forEach(function (tile) {
 			tile.classList.add('tiles4');
-			tile.classList.remove('tiles');
 			console.log(tile.className);
 		});
 	}
@@ -226,18 +294,72 @@ if (url[1] == "slide") {
 	var newgame = document.getElementById('newgame');
 	newgame.addEventListener("click", shuffle);
 
-	tile1.addEventListener("click", function () { click_tile(1, 1); });
-	tile2.addEventListener("click", function () { click_tile(1, 2); });
-	tile3.addEventListener("click", function () { click_tile(1, 3); });
+	var shownums = document.getElementById('show-numbers');
+	var hidenums = document.getElementById('hide-numbers');
 
-	tile4.addEventListener("click", function () { click_tile(2, 1); });
-	tile5.addEventListener("click", function () { click_tile(2, 2); });
-	tile6.addEventListener("click", function () { click_tile(2, 3); });
+	shownums.addEventListener("click", function () {
+		shownums.classList.add('hide');
+		hidenums.classList.remove('hide');
+		var tiles = document.getElementsByClassName('tiles');
+		for (let i = 0; i < tiles.length; i++) {
+			tiles[i].classList.remove('no-numbers');
+			tiles[i].classList.add('show-numbers');
+		}
+	})
 
-	tile7.addEventListener("click", function () { click_tile(3, 1); });
-	tile8.addEventListener("click", function () { click_tile(3, 2); });
-	tile9.addEventListener("click", function () { click_tile(3, 3); });
+	hidenums.addEventListener("click", function () {
+		shownums.classList.remove('hide');
+		hidenums.classList.add('hide');
+		hideNumbers(shownums, hidenums);
+	})
 
+	tile1.addEventListener("click", function () {
+		var solved = click_tile(1, 1);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile2.addEventListener("click", function () {
+		var solved = click_tile(1, 2);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile3.addEventListener("click", function () {
+		var solved = click_tile(1, 3);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+
+	tile4.addEventListener("click", function () {
+		var solved = click_tile(2, 1);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile5.addEventListener("click", function () {
+		var solved = click_tile(2, 2);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile6.addEventListener("click", function () {
+		var solved = click_tile(2, 3);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+
+	tile7.addEventListener("click", function () {
+		var solved = click_tile(3, 1);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile8.addEventListener("click", function () {
+		var solved = click_tile(3, 2);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
+	tile9.addEventListener("click", function () {
+		var solved = click_tile(3, 3);
+		if (solved === true)
+			displaySolved(whichPic);
+	});
 }
 
 /****************************************************

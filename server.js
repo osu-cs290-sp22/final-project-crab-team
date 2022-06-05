@@ -72,6 +72,10 @@ app.get('/slide', function (request, response, next) {
 	response.status(200).render('slide', { layout: 'main', button: false });
 });
 
+app.get('/add', function (request, response, next) {
+	response.status(200).render('add', { layout: 'main' });
+})
+
 app.get('/slide/:num', function (request, response, next) {
 	var number = request.params.num;
 	if (number < 0 || number > 3) { next(); }

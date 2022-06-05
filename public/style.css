@@ -192,6 +192,70 @@ a {
 	width: 90%;
 }
 
+#add-fact-container {
+	position: relative;
+	left: 25%;
+	width: 50%;
+}
+
+#add-fact-container h1 {
+	position: relative;
+	left: 25%;
+	font-size: 50px;
+	color: darkred
+}
+
+#add-fact-container p {
+	color: darkred;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 0%;
+}
+
+#crab-guard-container {
+	position: relative;
+	left: 25%;
+	width: 350px;
+	height: 310px;
+	padding: 0%;
+	margin-bottom: 0%;
+	margin-top: -3%;
+}
+
+.no-numbers {
+	color: transparent;
+}
+
+.show-numbers {
+	color: white;
+	font-size: 25px;
+	text-align: left;
+}
+
+#crab-guard-container img {
+	width: 100%;
+	height: auto;
+}
+
+#trivia-slide-buttons {
+	position: relative;
+	left: 29%;
+}
+
+.add-button {
+	background-color: rgb(237, 99, 84);
+	color: white;
+	font-size: 25px;
+	padding: 10px;
+	margin-right: 12px;
+	border-radius: 5px;
+	border: 2px solid orange;
+}
+
+.add-button:hover {
+	background-color: lightsalmon;
+}
+
 .oops-crab {
 	position: relative;
 	left: 30%;
@@ -372,7 +436,7 @@ a {
 	color: #4a0d16;
 }
 
-#add-fact-button {
+.add-fact-button {
 	font-size: 25px;
 	color: white;
 	background-color: darkred;
@@ -383,9 +447,19 @@ a {
 	cursor: pointer;
 }
 
-#add-fact-button:hover {
+.add-fact-button:hover {
 	background-color: #fc7e91;
 	color: #4a0d16;
+}
+
+.solved-add-fact {
+	background-color: rgb(91, 225, 91);
+	border: 1px solid darkgreen;
+}
+
+.solved-add-fact:hover {
+	background-color: lightgreen;
+	color: darkgreen;
 }
 
 .button {
@@ -466,7 +540,54 @@ a {
 	cursor: default;
 }
 
-#newgame {
+.tile9.solved0 {
+	background-image: url('/images/slide/crab0.jpg');
+	background-position: right bottom;
+}
+
+.tile9.solved1 {
+	background-image: url('/images/slide/crab1.jpg');
+	background-position: right bottom;
+}
+
+.tile9.solved2 {
+	background-image: url('/images/slide/crab2.jpg');
+	background-position: right bottom;
+}
+
+.tile9.solved3 {
+	background-image: url('/images/slide/cool_crab.jpg');
+	background-position: right bottom;
+}
+
+#puzzle-container {
+	position: relative;
+	top: 0%;
+}
+
+#table {
+	padding: 2px;
+}
+
+.unsolved-border {
+	border: 5px solid #e6e6e6;
+}
+
+.winborder {
+	border: 5px solid rgb(91, 225, 91);
+}
+
+#game-play-message {
+	color: darkred;
+	font-weight: bold;
+}
+
+#solved-message {
+	color: green;
+	font-weight: bold;
+}
+
+.game-button {
 	font-size: 25px;
 	color: white;
 	background-color: darkred;
@@ -478,9 +599,31 @@ a {
 	cursor: pointer;
 }
 
-#newgame:hover {
+.game-button:hover {
 	background-color: #fc7e91;
 	color: #4a0d16;
+}
+
+#solved-play-again {
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+	background-color: rgb(91, 225, 91);
+	border: 1px solid darkgreen;
+	border-radius: 5px;
+	padding: 10px;
+	padding-top: 8px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+#puzzle-solved-buttons {
+	margin-top: 5px;
+}
+
+#solved-play-again:hover {
+	background-color: lightgreen;
+	color: darkgreen;
 }
 
 .play-button {
