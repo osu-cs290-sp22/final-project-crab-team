@@ -83,7 +83,7 @@ function validate() {
 	else { return true; }
 }
 
-if (url[1] == 'trivia' || url[1] == 'slide') {
+if (url[1] == 'trivia' || url[1] == 'slide' || url[1] == 'memory') {
 	unhide_modal();
 	//on button click, open and close the fact creator
 	document.getElementsByClassName("add-fact-button")[0].addEventListener("click", unhide_modal);
@@ -111,31 +111,28 @@ if (url[1] == 'trivia' || url[1] == 'slide') {
 /****************************************************
 MEMORY GAME
 *****************************************************/
-function flip_card()
-{
+function flip_card() {
 	if (lock) { return; }
-	
+
 	this.classList.add('flip');
 	var front = this.querySelector('.front-face');
 	var back = this.querySelector('.back-face');
 	front.classList.remove('hide');
 	back.classList.add('hide');
-	
-	if (!flipped)
-	{
+
+	if (!flipped) {
 		flipped = true;
 		card1 = this;
 		return;
 	}
-	
+
 	card2 = this;
 	flipped = false;
 	match();
 
 }
 
-function unflip_cards()
-{
+function unflip_cards() {
 	lock = true;
 	setTimeout(() => {
 		card1.classList.remove('flip');
@@ -148,12 +145,10 @@ function unflip_cards()
 	lock = false;
 }
 
-function match()
-{
+function match() {
 	var front1 = card1.querySelector('.front-face').src;
 	var front2 = card2.querySelector('.front-face').src;
-	if (front1 === front2)
-	{
+	if (front1 === front2) {
 		disable_cards();
 		if (counter == 12) { display_win(); }
 		return;
@@ -161,27 +156,24 @@ function match()
 	unflip_cards();
 }
 
-function disable_cards()
-{
+function disable_cards() {
 	card1.removeEventListener('click', flip_card);
 	card2.removeEventListener('click', flip_card);
 	counter += 2;
 }
 
-function display_win()
-{
+function display_win() {
 	console.log("yay");
 	var win_screen = document.getElementById('win');
 	win_screen.classList.remove('hide');
 }
 
-if (url[1] == 'memory')
-{
+if (url[1] == 'memory') {
 	var flipped = false;
 	let card1, card2;
 	var counter = 0;
 	var lock = false;
-	
+
 	const cards = document.querySelectorAll('.memory-card')
 	cards.forEach(card => {
 		let ramdomPos = Math.floor(Math.random() * 12);

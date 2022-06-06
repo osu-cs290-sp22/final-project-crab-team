@@ -3,10 +3,10 @@
 
 	<section class="memory-game">
 		{{#each card}}
-			{{>card card=.}}
-			{{>card card=.}}
+		{{>card card=.}}
+		{{>card card=.}}
 		{{/each}}
-		
+
 	</section>
 
 	<div id="win" class="hide">
@@ -15,5 +15,6 @@
 
 		<a class="homebutton" href="/memory">Yes</a>
 		<a class="homebutton" href="/">No</a>
+		{{>button}}
 	</div>
 </center>

@@ -239,7 +239,7 @@ a {
 
 #trivia-slide-buttons {
 	position: relative;
-	left: 29%;
+	left: 15%;
 }
 
 .add-button {
@@ -428,6 +428,8 @@ a {
 	border-radius: 8px;
 	padding: 10px;
 	margin: 15px 25px;
+	margin-left: 10px;
+	margin-right: 15px;
 	cursor: pointer;
 }
 
@@ -658,14 +660,14 @@ a {
 	margin: auto;
 	perspective: 1000px;
 	margin-bottom: 30px;
-	
+
 }
 
 .memory-card {
 	height: calc(20% - 10px);
 	width: calc(24% - 10px);
 	position: relative;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
 	margin: 5px;
 	background-color: #b1d9fa;
 	border-radius: 5px;
@@ -684,7 +686,8 @@ a {
 	transform: rotateY(180deg);
 }
 
-.front-face, .back-face{
+.front-face,
+.back-face {
 	max-width: 95%;
 	height: auto;
 	margin-left: 8px;
