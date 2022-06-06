@@ -1,6 +1,7 @@
 //insert client-side javascript here
 
 const post_url = window.location.protocol + '/add';
+var url = window.location.pathname.split('/');
 
 function add_fact(title, text, author, tags) {
 	if (!validate()) { return; }
@@ -82,11 +83,6 @@ function validate() {
 	else { return true; }
 }
 
-var url = window.location.pathname.split('/');
-
-console.log(url);
-
-
 if (url[1] == 'trivia' || url[1] == 'slide') {
 	unhide_modal();
 	//on button click, open and close the fact creator
@@ -111,6 +107,90 @@ if (url[1] == 'trivia' || url[1] == 'slide') {
 		unhide_modal();
 	});
 }
+
+/****************************************************
+MEMORY GAME
+*****************************************************/
+function flip_card()
+{
+	if (lock) { return; }
+	
+	this.classList.add('flip');
+	var front = this.querySelector('.front-face');
+	var back = this.querySelector('.back-face');
+	front.classList.remove('hide');
+	back.classList.add('hide');
+	
+	if (!flipped)
+	{
+		flipped = true;
+		card1 = this;
+		return;
+	}
+	
+	card2 = this;
+	flipped = false;
+	match();
+
+}
+
+function unflip_cards()
+{
+	lock = true;
+	setTimeout(() => {
+		card1.classList.remove('flip');
+		card1.querySelector('.front-face').classList.add('hide');
+		card1.querySelector('.back-face').classList.remove('hide');
+		card2.classList.remove('flip');
+		card2.querySelector('.front-face').classList.add('hide');
+		card2.querySelector('.back-face').classList.remove('hide');
+	}, 500);
+	lock = false;
+}
+
+function match()
+{
+	var front1 = card1.querySelector('.front-face').src;
+	var front2 = card2.querySelector('.front-face').src;
+	if (front1 === front2)
+	{
+		disable_cards();
+		if (counter == 12) { display_win(); }
+		return;
+	}
+	unflip_cards();
+}
+
+function disable_cards()
+{
+	card1.removeEventListener('click', flip_card);
+	card2.removeEventListener('click', flip_card);
+	counter += 2;
+}
+
+function display_win()
+{
+	console.log("yay");
+	var win_screen = document.getElementById('win');
+	win_screen.classList.remove('hide');
+}
+
+if (url[1] == 'memory')
+{
+	var flipped = false;
+	let card1, card2;
+	var counter = 0;
+	var lock = false;
+	
+	const cards = document.querySelectorAll('.memory-card')
+	cards.forEach(card => {
+		let ramdomPos = Math.floor(Math.random() * 12);
+		card.style.order = ramdomPos;
+	});
+	cards.forEach(card => card.addEventListener('click', flip_card));
+}
+
+
 
 /****************************************************
 SLIDE PUZZLE

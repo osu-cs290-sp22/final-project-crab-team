@@ -650,3 +650,52 @@ a {
 .slide-selection>li {
 	margin: 25px;
 }
+
+.memory-game {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	perspective: 1000px;
+	margin-bottom: 30px;
+	
+}
+
+.memory-card {
+	height: calc(20% - 10px);
+	width: calc(24% - 10px);
+	position: relative;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	margin: 5px;
+	background-color: #b1d9fa;
+	border-radius: 5px;
+	transform: scale(1);
+	cursor: pointer;
+	transform-style: preserve-3d;
+	transition: transform .3s;
+}
+
+.memory-card:active {
+	transform: scale(0.97);
+	transition: transform .2s;
+}
+
+.memory-card.flip {
+	transform: rotateY(180deg);
+}
+
+.front-face, .back-face{
+	max-width: 95%;
+	height: auto;
+	margin-left: 8px;
+	margin-top: 4px;
+	border-radius: 5px;
+}
+
+.front-face {
+	transform: rotateY(180deg);
+}
+
+#win {
+	margin-bottom: 40px;
+}

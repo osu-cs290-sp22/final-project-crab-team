@@ -7,7 +7,7 @@ var path = require('path');
 var fs = require('fs');
 var hbs = require('express-handlebars');
 var fact_data = require(__dirname + '/crab_facts.json');
-//var trivia_data = require(__dirname + '/trivia_questions.json');
+var card_data = require(__dirname + '/memory_cards.json');
 var app = express();
 
 //includes all our funky little css and js files
@@ -82,6 +82,10 @@ app.get('/slide/:num', function (request, response, next) {
 	var image = "/images/slide/crab" + number + ".jpg";
 	//console.log(image);
 	response.status(200).render('slide', { layout: 'main', button: true });
+});
+
+app.get('/memory', function (request, response, next) {
+	response.status(200).render('memory', {layout: 'main', card: card_data});
 });
 
 app.get('*', function (request, response) {

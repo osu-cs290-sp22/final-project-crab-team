@@ -1,0 +1,19 @@
+<center>
+	<h2 class="message">Find all the matching crabs!</h2>
+
+	<section class="memory-game">
+		{{#each card}}
+			{{>card card=.}}
+			{{>card card=.}}
+		{{/each}}
+		
+	</section>
+
+	<div id="win" class="hide">
+		<h2 class="message"> Congratulations </h2>
+		<p class="message-text"> All the crabs match! Play again? </p>
+
+		<a class="homebutton" href="/memory">Yes</a>
+		<a class="homebutton" href="/">No</a>
+	</div>
+</center>
