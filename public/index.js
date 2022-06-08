@@ -168,6 +168,7 @@ function display_win() {
 	win_screen.classList.remove('hide');
 }
 
+
 if (url[1] == 'memory') {
 	var flipped = false;
 	let card1, card2;
@@ -182,6 +183,9 @@ if (url[1] == 'memory') {
 	cards.forEach(card => card.addEventListener('click', flip_card));
 }
 
+/****************************************************
+SEARCH BAR FUNCTIONALITY
+*****************************************************/
 if (url[1] == '') {
 	var facts = document.getElementsByClassName('fact-text');
     var authors = document.getElementsByClassName('fact-author');
@@ -198,23 +202,22 @@ if (url[1] == '') {
 		var tags = document.getElementsByClassName('tag-text');
 
         for (i = nodes.length - 1; i >= 0; i--) {
-			//lowercase the text from the current twit and the current twit author
+			//lowercase the text from the current fact
 			var nodeText = facts[i].textContent.toLowerCase();
 			var author = authors[i].textContent.toLowerCase();
 			var tagset = tags[i].textContent.toLowerCase();
 
-			//if text is not found within the twit text or the twit author
+			//if text is not found within the fact
 			if (!nodeText.includes(searchtext) && !author.includes(searchtext) && !tagset.includes(searchtext)) {
 				nodes[i].classList.add('hide');
 			}
+			//if text is found within removed facts, unhide them
 			if (nodeText.includes(searchtext) || author.includes(searchtext) || tagset.includes(searchtext)) {
 				nodes[i].classList.remove('hide');
 			}
 		}
 	})
 
-	  
-}
 
 /****************************************************
 SLIDE PUZZLE
