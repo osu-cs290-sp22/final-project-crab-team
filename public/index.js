@@ -182,7 +182,39 @@ if (url[1] == 'memory') {
 	cards.forEach(card => card.addEventListener('click', flip_card));
 }
 
+if (url[1] == '') {
+	var facts = document.getElementsByClassName('fact-text');
+    var authors = document.getElementsByClassName('fact-author');
+	var tags = document.getElementsByClassName('tag-text');
+	var search = document.getElementById('nav-search-input');
 
+	search.addEventListener('input', function () {
+		var usertext = document.getElementById('nav-search-input').value;
+		var searchtext = usertext.toLowerCase();
+        //if text is not found within the fact text, author, or tags
+		var nodes = document.getElementsByClassName('crab-fact');
+		var facts = document.getElementsByClassName('fact-text');
+		var authors = document.getElementsByClassName('fact-author');
+		var tags = document.getElementsByClassName('tag-text');
+
+        for (i = nodes.length - 1; i >= 0; i--) {
+			//lowercase the text from the current twit and the current twit author
+			var nodeText = facts[i].textContent.toLowerCase();
+			var author = authors[i].textContent.toLowerCase();
+			var tagset = tags[i].textContent.toLowerCase();
+
+			//if text is not found within the twit text or the twit author
+			if (!nodeText.includes(searchtext) && !author.includes(searchtext) && !tagset.includes(searchtext)) {
+				nodes[i].classList.add('hide');
+			}
+			if (nodeText.includes(searchtext) || author.includes(searchtext) || tagset.includes(searchtext)) {
+				nodes[i].classList.remove('hide');
+			}
+		}
+	})
+
+	  
+}
 
 /****************************************************
 SLIDE PUZZLE

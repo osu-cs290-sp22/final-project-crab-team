@@ -5,11 +5,19 @@ body {
 }
 
 .topheader {
+	display: flex;
 	position: fixed;
 	width: 100%;
 	height: 15%;
+	padding-top: 1%;
 	background-color: darkred;
-	margin: 0%;
+	justify-content: space-between;
+	align-items: baseline;
+
+}
+
+.crabby-title {
+	padding-top: 20%;
 }
 
 .sidenav {
@@ -183,6 +191,14 @@ a {
 	font-weight: 600;
 	margin-right: 10px;
 }
+
+#nav-item-search {
+	padding: 40px;
+	float: right;
+	line-height: 38px;
+	align-self: center;
+	
+  }
 
 .tags {
 	position: relative;
