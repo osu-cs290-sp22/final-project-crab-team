@@ -61,7 +61,7 @@ app.post('/add', function (request, response, next) {
 
 //Server's GET requests for pages
 app.get('/', function (request, response) {
-	response.status(200).render('facts', { layout: 'main', facts: fact_data });
+	response.status(200).render('facts', { layout: 'main', facts: fact_data, search: true });
 });
 
 app.get('/trivia', function (request, response, next) {
